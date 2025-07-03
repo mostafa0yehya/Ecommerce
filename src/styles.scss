@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+*{
+  box-sizing: border-box;
+}
+
+@theme{
+    --color-main:#FF7700;
+    --color-head:#333333	;
+    --color-pargraph:#4B5563	;
+--color-mainHover:#e66400;
+    --breakpoint-2xl:90rem;
+}
+a{
+    cursor: pointer;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+  font-family: "Montserrat", sans-serif;
+
+}
+p{
+  font-family: "Inter", sans-serif;
+}
+
+
+.snack-success {
+  background-color: #e6f4ea;
+  color: #207f4c;
+  .mdc-snackbar__actions button:hover > *{
+      background-color: #e6f4ea;
+  color: #207f4c;
+
+  }
+}
+
+.snack-error {
+  background-color: #fdecea;
+  color: #d93025;
+ 
+.mdc-snackbar__actions button:hover > *
+{
+    background-color: #fdecea ;
+    color: #d93025;
+
+  }
+}
+
+.snack-warning {
+  background-color: #fff4e5;
+  color: #ff8c00;
+}
+
+

@@ -1,0 +1,114 @@
+<div
+  class="overflow-hidden login lg:h-[calc(100vh_-_96px)] flex items-center bg-[#FFF8F3] lg:bg-[linear-gradient(to_right,#FFF8F3_50%,_#ffffff_50%)] py-10"
+>
+  <div
+    class="container mx-auto md:w-[90%] grid grid-cols-1 lg:grid-cols-2 px-4 rounded-3xl pt-8 bg-white lg:bg-transparent"
+  >
+    <div class="image flex flex-col justify-cente items-center">
+      <h3 class="text-[35px] font-semibold text-head w-[80%] text-center">
+        Be one of the cool crowd , shop smart , shop now
+      </h3>
+      <img
+        src="/images/smiley-woman-autumn-sale.png"
+        class="w-full lg:w-[65%]"
+      />
+    </div>
+    <div class="form-div px-5">
+      <div class="heading mb-5">
+        <h1 class="text-[35px] font-bold text-head">Login</h1>
+        <p class="text-pargraph">Welcome back! Please login to continue</p>
+      </div>
+    <form [formGroup]="formObj" (ngSubmit)="handelLogin()">
+        <div class="input-group w-full my-4">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            class="w-full"
+            placeholder="email"
+            formControlName="email"
+          />
+          @if(formObj.get("email")?.touched &&formObj.get("email")?.invalid ){
+          <div
+            class="mt-2 flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
+            role="alert"
+          >
+            <span class="sr-only">Error</span>
+            <div>
+              <ul class="list-disc list-inside">
+                @if(formObj.get("email")?.getError("required")){
+
+                <li class="mb-1 fade">
+                  <span class="font-medium">Email is required.</span>
+                </li>
+                } @if(formObj.get("email")?.getError("email")){
+
+                <li class="mb-1 fade">
+                  <span class="font-medium">Please enter a valid email </span>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          }
+        </div>
+        <div class="input-group w-full my-4">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="w-full"
+            placeholder="password"
+            formControlName="password"
+          />
+
+          @if(formObj.get("password")?.touched&&formObj.get("password")?.invalid
+          ){
+          <div
+            class="mt-2 flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 fade"
+            role="alert"
+          >
+            <span class="sr-only">Error</span>
+            <div>
+              <ul class="list-disc list-inside">
+                @if(formObj.get("password")?.getError("required")){
+
+                <li class="mb-1 fade">
+                  <span class="font-medium">Password is required.</span>
+                </li>
+
+                }
+              </ul>
+            </div>
+          </div>
+
+          }
+        </div>
+
+
+
+
+        
+        <button
+          [disabled]="formObj.invalid || showSpinner"
+          class="block w-full bg-main text-white rounded-[10px] py-2 transition hover:bg-mainHover cursor-pointer disabled:bg-orange-200 disabled:cursor-not-allowed"
+        >
+          <span>LOGIN</span>
+          @if(showSpinner){
+          <span class="ms-1.5"
+            ><i class="fa-solid fa-spinner fa-spin"></i
+          ></span>
+
+          }
+        </button>
+      </form> 
+      <div class="flex items-center gap-4 my-4 w-[70%] mx-auto">
+        <hr class="flex-grow border-t border-gray-300" />
+        <span class="text-gray-500 text-sm">OR</span>
+        <hr class="flex-grow border-t border-gray-300" />
+      </div>
+    </div>
+  </div>
+</div>
+ 

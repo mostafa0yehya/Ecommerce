@@ -1,0 +1,75 @@
+
+
+<nav class=" border-gray-200 bg-[#0000001a]   ">
+ <div class="container mx-auto ">
+   <div class=" flex flex-wrap items-center justify-between  p-6  ">
+    <a  class="flex items-center space-x-3 rtl:space-x-reverse order-1 ">
+       
+        <span class="self-center text-[32px] font-semibold whitespace-nowrap  text-main">Trendify</span>
+    </a>
+
+   <div class="hidden       w-full md:block md:w-auto md:mx-auto  order-3  sm:order-2  " id="navbar-default">
+@if(isLoggedIn){
+    <ul class="font-medium  flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+    <li>
+      <a class="block py-2 px-3 text-[18px] md:p-0" aria-current="page" routerLink="/home">Home</a>
+    </li>
+  <li>
+      <a class="block py-2 px-3  text-[18px] md:p-0" routerLink="/products" aria-current="page">Products</a>
+    </li>  <li>
+      <a class="block py-2 px-3 text-[18px] md:p-0" routerLink="/about" aria-current="page">About Us</a>
+    </li>  <li>
+      <a class="block py-2 px-3 text-[18px] md:p-0" routerLink="/blog" aria-current="page">Blog</a>
+    </li>  <li>
+      <a class="block py-2 px-3 text-[18px] md:p-0" routerLink="/contact" aria-current="page">Contact Us</a>
+    </li>
+  </ul>
+}
+ 
+</div>
+ 
+<div class="flex  justify-between items-center order-2 sm:order-3 relative ">
+     <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 mx-[30px] " aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+
+    <ul class="flex justify-between items-center gap-2 lg:gap-5  overflow-hidden">
+      <li ><a ><i class="fa-regular fa-heart text-[22px]"></i></a></li>
+      <li><a routerLink="/cart"><i class="fa-solid fa-cart-shopping text-[22px]"></i></a></li>
+         <li >
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center cursor-pointer justify-between w-full ">
+                     <i class="fa-regular fa-user text-[22px]"></i>
+
+            </button>
+          
+            <!-- Dropdown menu -->
+            <div id="dropdownNavbar" class="z-10 hidden font-normal divide-y divide-gray-100 rounded-lg shadow-sm bg-amber-100">
+             <div  class="py-1 ">
+                  <a  class="block px-4 py-2 text-sm hover:bg-gray-100" (click)="logOut()">Sign out</a>
+                </div>
+              <ul class="py-2 text-sm " aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a routerLink="/register" class="block px-4 py-2">register</a>
+                  </li>
+                
+                  <li>
+                    <a  class="block px-4 py-2">Earnings</a>
+                  </li>
+                </ul>
+               
+            </div>
+        </li>
+
+   
+    </ul>
+</div>
+  </div>
+ </div>
+</nav>
+
+
+
+

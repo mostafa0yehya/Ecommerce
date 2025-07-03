@@ -1,0 +1,50 @@
+
+
+
+.register .container{
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+
+
+
+
+input.ng-valid.ng-dirty{
+    border-color:  green;
+        border-width: 2px;
+
+}input.ng-invalid.ng-dirty{
+    border-color: red;
+    border-width: 2px;
+}
+input{
+    border: 1px solid rgb(160, 158, 158);
+    transition: 0.1s ease border;
+    border-radius: 10px;
+    margin-top: 5px;
+
+
+}
+label{
+  color: var(--color-head);
+}
+input:focus{
+    box-shadow: none;
+    border-color: var(--color-main);
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

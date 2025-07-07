@@ -1,11 +1,11 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import {
   provideRouter,
-  withHashLocation,
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import lara from '@primeng/themes/lara';
 import { routes } from './app.routes';
 import {
   provideClientHydration,
@@ -23,6 +23,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' })
     ),
     provideClientHydration(withEventReplay()),
+     
     
   ],
 };

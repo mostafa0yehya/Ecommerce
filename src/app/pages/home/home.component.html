@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="products">
+  <h2 class="text-head mx-auto text-center">All Products</h2>
+
+  <div class="container grid grid-cols-1 md:grid-cols-5 mx-auto gap-2">
+    @for (productItem of productList; track productItem.id) {
+
+    <app-product [product]="productItem"></app-product>
+
+    }
+
+
+    
+  </div>
+</div>

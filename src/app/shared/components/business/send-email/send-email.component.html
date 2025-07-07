@@ -1,0 +1,54 @@
+<form [formGroup]="sendCode" (ngSubmit)="sendCodeStep()">
+  <ng-template matStepLabel
+    ><span class="text-head font-semibold text-[18px]"
+      >Send Code</span
+    ></ng-template
+  >
+  <div class="input-group w-full mb-4">
+    <label for="email">E-mail </label>
+    <input
+      type="text"
+      id="email"
+      class="w-full"
+      placeholder="email"
+      formControlName="email"
+    />
+    @if(sendCode.get("email")?.touched &&sendCode.get("email")?.invalid ){
+    <div
+      class="mt-2 flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
+      role="alert"
+    >
+      <span class="sr-only">Error</span>
+      <div>
+        <ul class="list-disc list-inside">
+          @if(sendCode.get("email")?.getError("required")){
+
+          <li class="mb-1 fade">
+            <span class="font-medium">Email is required.</span>
+          </li>
+          } @if(sendCode.get("email")?.getError("email")){
+
+          <li class="mb-1 fade">
+            <span class="font-medium">Please enter a valid email </span>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    }
+  </div>
+
+  <button
+    [disabled]="sendCode.invalid || showSpin"
+    class="block w-[150px] bg-main text-white rounded-[10px] py-2 transition hover:bg-mainHover cursor-pointer disabled:bg-orange-200 disabled:cursor-not-allowed"
+  >
+    <span>Send</span>
+    @if(showSpin){
+    <span class="ms-1.5"><i class="fa-solid fa-spinner fa-spin"></i></span>
+
+    }
+  </button>
+</form>
+<div class="mt-4"></div>
+

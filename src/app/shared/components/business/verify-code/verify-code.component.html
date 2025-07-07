@@ -1,0 +1,50 @@
+<form
+  [formGroup]="verfiyCode"
+  (ngSubmit)="sendverify()"
+  class="flex flex-col gap-4"
+>
+  <ng-template matStepLabel
+    ><span class="text-head font-semibold text-[18px]">
+      Verify Code</span
+    ></ng-template
+  >
+
+<ng-otp-input
+  formControlName="resetCode"
+  [config]="otpConfig"
+></ng-otp-input>
+     @if(verfiyCode.dirty &&verfiyCode.invalid ){
+          <div
+            class="mt-2 flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
+            role="alert"
+          >
+            <span class="sr-only">Error</span>
+            <div>
+              <ul class="list-disc list-inside">
+                @if(verfiyCode.get("resetCode")?.getError("required")){
+
+                <li class="mb-1 fade">
+                  <span class="font-medium">Verifcation Code is required.</span>
+                </li>
+                } @if(verfiyCode.get("resetCode")?.getError("pattern")){
+
+                <li class="mb-1 fade">
+                  <span class="font-medium">Number Only Are Allowed </span>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          }
+  <button
+    [disabled]=" verifySpinner"
+    class="block w-[150px] bg-main text-white rounded-[10px] py-2 transition hover:bg-mainHover cursor-pointer disabled:bg-orange-200 disabled:cursor-not-allowed"
+  >
+    <span>Verify</span>
+    @if(verifySpinner){
+    <span class="ms-1.5"><i class="fa-solid fa-spinner fa-spin"></i></span>
+
+    }
+  </button>
+</form>

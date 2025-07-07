@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthServiceService } from '../../core/auth-service.service';
+import { AuthServiceService } from '../../core/services/auth-service.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 @Component({
@@ -34,7 +34,8 @@ export class LoginComponent implements OnDestroy {
   handelLogin() {
     this.showSpinner = true;
 
-    this.subscription = this.authServiceService
+ if(this.formObj.valid){
+     this.subscription = this.authServiceService
       .login(this.formObj.value)
       .subscribe({
         next: (response) => {
@@ -52,6 +53,7 @@ export class LoginComponent implements OnDestroy {
           this.showSpinner = false;
         },
       });
+ }
 
   }
   ngOnDestroy(): void {

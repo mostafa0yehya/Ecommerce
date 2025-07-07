@@ -3,50 +3,49 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
-*{
+* {
   box-sizing: border-box;
 }
 
-@theme{
-    --color-main:#FF7700;
-    --color-head:#333333	;
-    --color-pargraph:#4B5563	;
---color-mainHover:#e66400;
-    --breakpoint-2xl:90rem;
+@theme {
+  --color-main: #ff7700;
+  --color-head: #333333;
+  --color-pargraph: #4b5563;
+  --color-mainHover: #e66400;
+  --breakpoint-2xl: 90rem;
 }
-a{
-    cursor: pointer;
+a {
+  cursor: pointer;
 }
 
-
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", sans-serif;
-
 }
-p{
+p {
   font-family: "Inter", sans-serif;
 }
-
 
 .snack-success {
   background-color: #e6f4ea;
   color: #207f4c;
-  .mdc-snackbar__actions button:hover > *{
-      background-color: #e6f4ea;
-  color: #207f4c;
-
+  .mdc-snackbar__actions button:hover > * {
+    background-color: #e6f4ea;
+    color: #207f4c;
   }
 }
 
 .snack-error {
   background-color: #fdecea;
   color: #d93025;
- 
-.mdc-snackbar__actions button:hover > *
-{
-    background-color: #fdecea ;
-    color: #d93025;
 
+  .mdc-snackbar__actions button:hover > * {
+    background-color: #fdecea;
+    color: #d93025;
   }
 }
 
@@ -55,4 +54,37 @@ p{
   color: #ff8c00;
 }
 
+input.ng-valid.ng-dirty {
+  border-color: green;
+  border-width: 2px;
+}
+input.ng-invalid.ng-dirty {
+  border-color: red;
+  border-width: 2px;
+}
+input {
+  border: 1px solid rgb(160, 158, 158);
+  transition: 0.1s ease border;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+label {
+  color: var(--color-head);
+}
+input:focus {
+  box-shadow: none;
+  border-color: var(--color-main);
+}
 
+.fade {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

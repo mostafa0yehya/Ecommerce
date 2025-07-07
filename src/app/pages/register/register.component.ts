@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthServiceService } from '../../core/auth-service.service';
+import { AuthServiceService } from '../../core/services/auth-service.service';
 import { passwordMatch } from '../../shared/validators/passwordValidator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';

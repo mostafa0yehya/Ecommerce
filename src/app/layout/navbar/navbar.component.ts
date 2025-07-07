@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FlowbiteService } from '../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthServiceService } from '../../core/auth-service.service';
+import { AuthServiceService } from '../../core/services/auth-service.service';
 
 @Component({
   selector: 'app-navbar',

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { OffersService } from '../../core/services/offers.service';
+import { FloatLabelModule } from "primeng/floatlabel"
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-not-found',
-  imports: [],
+    imports: [FloatLabelModule, InputTextModule, FormsModule],
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss',
 })

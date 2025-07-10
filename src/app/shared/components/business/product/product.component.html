@@ -1,63 +1,69 @@
-<div class="card relative border-1 p-1 bg-[#F8F8F9] border-gray-200 h-full">
-  <figure class="mb-1.5 relative overflow-hidden">
-    <img class="rounded" [src]="product.imageCover" alt="Watch" />
-    <a class="absolute badge bottom-2 right-3 badge">
-      <span
-        class="rounded size-8 text-[20px] transition bg-white text-main flex justify-center items-center hover:bg-main hover:text-white"
-      >
-        <i class="fa-solid fa-cart-plus"></i>
-      </span>
-    </a>
-    <a class="absolute badge top-2 right-3 badge">
-      <span
-        class="rounded size-8 text-[20px] transition bg-white p-0 text-main flex justify-center items-center hover:bg-main hover:text-white"
-        ><i class="fa-regular fa-heart"></i
-      ></span>
-    </a>
-  </figure>
-  <div class="card-body p-3">
-    <h5 class="card-title mb-1.5 text-head font-bold text-[15px] line-clamp-2">
-      {{ product.title.split(" ", 10).join(" ") }}
-    </h5>
-    <div class="flex justify-between items-baseline">
-      <div class="price flex items-center">
-        <p class="mb-0 font-bold text-[16px] me-2">
-          {{ product.priceAfterDiscount?product.priceAfterDiscount:product.price }} <span class="font-normal text-[14px]">EGP</span>
-        </p>
-        @if(product.priceAfterDiscount){
-        <p class="mb-0 line-through text-gray-500 text-[15px] me-1">
-          {{ product.price }}
-        </p>
-
-        <p class="mb-0 text-green-700 font-bold text-[15px]">
-          {{ productDiscount(product) }}%
-        </p>
-        }
+<a [routerLink]="['/productDetails', product.id]" class="block h-full">
+  <div
+    class="card relative border-1 p-1 bg-[#F8F8F9] border-gray-200 cursor-pointer h-full"
+  >
+    <figure class="mb-1.5 relative overflow-hidden">
+      <img class="rounded" [src]="product.imageCover" alt="Watch" />
+      <button class="absolute badge bottom-2 right-3 badge cursor-pointer">
+        <span
+          class="rounded size-8 text-[20px] transition bg-white text-main flex justify-center items-center hover:bg-main hover:text-white"
+        >
+          <i class="fa-solid fa-cart-plus"></i>
+        </span>
+      </button>
+      <div class="absolute top-2 right-3">
+        <app-wishlist-button></app-wishlist-button>
       </div>
+    </figure>
+    <div class="card-body p-3">
+      <h5 class="card-title mb-1 text-head font-bold text-[13px] line-clamp-2">
+        {{ product.title.split(" ", 10).join(" ") }}
+      </h5>
+      <div class=" ">
+        <div class="price flex items-center">
+          <p class="mb-0 font-bold text-[16px] me-2 flex items-center">
+            <span class="me-1">
+              {{
+                product.priceAfterDiscount
+                  ? product.priceAfterDiscount
+                  : product.price
+              }}
+            </span>
+            <span class="font-normal text-[14px]">EGP</span>
+          </p>
+          @if(product.priceAfterDiscount){
+          <p class="mb-0 line-through text-gray-500 text-[15px] me-1">
+            {{ product.price }}
+          </p>
 
-      <div class="rating flex items-center bg-white rounded w-[80px] px-2 py-1">
-        <div class="me-1 flex items-center">
-          <span class="text-[16px] text-head font-medium block">{{
-            product.ratingsAverage
-          }}</span>
-          <span class="text-[#FFD700] block text-[13px] align-text-bottom"
-            ><i class="fa-solid fa-star"></i
-          ></span>
+          <p class="mb-0 text-green-700 font-bold text-[15px]">
+            {{ this.productService.productDiscount(product) }}%
+          </p>
+          }
         </div>
-        <span class="text-gray-400">({{ product.ratingsQuantity }})</span>
+
+        <div
+          class="rating flex items-center bg-white rounded w-fit px-2 py-1 my-2"
+        >
+          <div class="me-1 flex items-center">
+            <span class="text-[16px] text-head font-medium block">{{
+              product.ratingsAverage
+            }}</span>
+            <span class="text-[#FFD700] block text-[13px] align-text-bottom"
+              ><i class="fa-solid fa-star"></i
+            ></span>
+          </div>
+          <span class="text-gray-400">({{ product.ratingsQuantity }})</span>
+        </div>
       </div>
-    </div>
 
-    @if(product.priceAfterDiscount){
-    <div class="absolute left-2 top-2 px-2 rounded align-middle bg-main block text-white sale">
-      sale
-    </div>
-    }
-
-    <div >{{currentOffer}}</div>
-    <div class="card-actions">
-      <button class="btn btn-primary">Buy Now</button>
-      <button class="btn btn-secondary btn-soft">Add to cart</button>
+      @if(product.priceAfterDiscount){
+      <div
+        class="absolute left-2 top-2 px-2 rounded align-middle bg-[#FFF8F3] block text-main sale font-semibold"
+      >
+        - {{ this.productService.productDiscount(product) }}%
+      </div>
+      }
     </div>
   </div>
-</div>
+</a>

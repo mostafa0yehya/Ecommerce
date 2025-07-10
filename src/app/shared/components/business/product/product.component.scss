@@ -2,13 +2,13 @@ img{
 transition: 0.3s transform;
     object-fit: cover;
 }
-a.badge{
-    transition: 0.3s ease-in ; 
-    transform: translateX(50px);
+button.badge{
+    transition: background-color  0.3s ease ; 
+    // transform: translateX(50px);
 }
-.card:hover a.badge{
-    transform: translateX(0);
-}
+// .card:hover button.badge{
+//     transform: translateX(0);
+// }
 .card:hover figure img{
     transform: scale(1.05);
 }

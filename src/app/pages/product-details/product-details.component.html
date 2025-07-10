@@ -1,0 +1,135 @@
+@if(productData){
+<div class="product-details">
+  <div class="container mx-auto px-3">
+    <div class="title my-4 py-2">
+      <a
+        [routerLink]="['/home']"
+        class="text-gray-400 text-[16px] font-extrabold hover:text-gray-900 transition-colors"
+        >Home
+      </a>
+      <span class="text-gray-400"> ></span>
+      <a
+        class="text-gray-400 text-[16px] font-bold hover:text-gray-900 transition-colors"
+      >
+        Category
+      </a>
+      <span class="text-gray-400"> > </span>
+      <span class="text-gray-400 font-semibold">{{
+        productData.category.name
+      }}</span>
+      <span class="text-gray-400"> > </span>
+
+      <span class="text-head font-medium">{{
+        productData.title.split(" ", 4).join(" ")
+      }}</span>
+    </div>
+
+    <div class="product-card grid grid-cols-12 my-10">
+      <div class="md:col-span-3 col-span-12 ">
+             <swiper-container
+             
+          class="mySwiper "
+          thumbs-swiper=".mySwiper2"
+          loop="true"
+          navigation="true"
+        >
+          @for (img of productData.images; track $index) {
+          <swiper-slide class="">
+            <img [src]="img" />
+          </swiper-slide>
+          }
+        </swiper-container>
+        <swiper-container
+          class="mySwiper2 hidden md:block "
+          loop="true"
+        
+          slides-per-view="4"
+          free-mode="true"
+          watch-slides-progress="true"
+        >
+          @for (img of productData.images; track $index) {
+            <swiper-slide class="slide">
+              <img [src]="img" class="object-cover " />
+            </swiper-slide>
+
+          }
+        </swiper-container>
+   
+      </div>
+
+      <div class="product md:col-span-7 ps-6 col-span-12 ">
+        <div class="my-2 relative flex items-center justify-between">
+          <span
+            class="bg-red-600 text-white px-1.5 py-0.5 text-[13px] rounded block"
+            >Non-Returnable</span
+          >
+          <app-wishlist-button></app-wishlist-button>
+        </div>
+        <div class="title border-b-1 border-gray-300 pb-3">
+          <h2 class="text-2xl text-head font-semibold md:w-[75%] mb-2">
+            {{ productData.title }}
+          </h2>
+          <p class="text-gray-700 text-[15px]">
+            Brand: {{ productData.brand.name }}
+          </p>
+        </div>
+        <div class="price flex items-center my-3">
+          <p class="mb-0 font-extrabold text-[20px] me-2 flex items-center">
+            <span class="me-1">
+              {{
+                productData.priceAfterDiscount
+                  ? productData.priceAfterDiscount
+                  : productData.price
+              }}
+            </span>
+            <span class="font-normal text-[14px]">EGP</span>
+          </p>
+          @if(productData.priceAfterDiscount){
+          <p class="mb-0 line-through text-gray-500 text-[14px] me-1.5">
+            {{ productData.price }}
+          </p>
+
+          <p class="mb-0 text-green-700 font-bold text-[14px]">
+            {{ this.productService.productDiscount(productData) }}% Off
+          </p>
+          }
+          <div class="ms-3.5">
+            <app-features-of-product></app-features-of-product>
+          </div>
+        </div>
+        <div class="rating flex items-center">
+          <div class="rating-info flex me-2 text-[18px] text-gray-800">
+            <span class="block me-1.5"
+              >(+{{ productData.ratingsQuantity }})</span
+            >
+
+            <span class="block">{{ productData.ratingsAverage }}</span>
+          </div>
+          <div class="stars text-yellow-400 text-[16px] flex gap-1">
+            @for (star of stars; track $index) { @if(star=="full"){
+            <span><i class="fa-solid fa-star"></i></span>
+
+            } @if(star=="half"){
+            <span><i class="fa-regular fa-star-half-stroke"></i></span>
+
+            } @if(star=="empty"){
+            <span> <i class="fa-regular fa-star"></i> </span>
+
+            } }
+          </div>
+        </div>
+
+        <div class="my-4 text-gray-600 font-semibold">
+          {{ productData.description }}
+        </div>
+        <button
+          class="bg-main my-8  md:w-1/2 flex text-white px-4  py-3 rounded cursor-pointer transition-colors hover:bg-mainHover"
+        >
+          <span class="block"> <i class="fa-solid fa-cart-plus"></i> </span>
+          <span class="block mx-auto">Add To Cart</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}

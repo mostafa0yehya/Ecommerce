@@ -12,7 +12,8 @@
   --color-head: #333333;
   --color-pargraph: #4b5563;
   --color-mainHover: #e66400;
-  --breakpoint-2xl: 90rem;
+  --breakpoint-2xl: 85rem;
+  
 }
 a {
   cursor: pointer;
@@ -81,10 +82,11 @@ input:focus {
   transform: translateY(-10px);
   animation: fadeIn 0.3s ease-in-out forwards;
 }
-
+ 
 @keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+ 

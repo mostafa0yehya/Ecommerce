@@ -13,11 +13,13 @@ import { SendEmailComponent } from './shared/components/business/send-email/send
 import { VerifyCodeComponent } from './shared/components/business/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './shared/components/business/reset-password/reset-password.component';
 import { authGuard } from './core/guards/auth.guard';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'productDetails/:id', component: ProductDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },

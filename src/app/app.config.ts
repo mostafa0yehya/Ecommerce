@@ -5,7 +5,8 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import lara from '@primeng/themes/lara';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 import { routes } from './app.routes';
 import {
   provideClientHydration,
@@ -23,7 +24,18 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' })
     ),
     provideClientHydration(withEventReplay()),
-     
-    
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          cssLayer: {
+            name: 'primeng',
+            order: ' base, primeng',
+          },
+          darkModeSelector: false || 'none',
+        },
+      },
+    }),
   ],
 };
